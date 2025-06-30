@@ -1,0 +1,232 @@
+@import url('./common/layout.css');
+@import url('../component/board/boardItem.css');
+@import url('../component/header/header.css');
+
+/* 메인 컨테이너 - 좌우 분할 레이아웃 */
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #90cae07a;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 왼쪽 검색 영역 */
+.search {
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 30px 20px;
+    margin: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.search input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search input:focus {
+    border-color: #7f6aee;
+    box-shadow: 0 0 0 3px rgba(172, 160, 235, 0.2);
+}
+
+.search button {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #7f6aee;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    border-radius: 6px;
+    width: 160px;
+    padding: 8px 0;
+    z-index: 999;
+}
+
+.search button:hover {
+    background-color: #5f4de3;
+}
+
+/* 오른쪽 메인 콘텐츠 영역 */
+.wrap {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #5460a575;
+}
+
+.boardList {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    overflow-y: auto;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.write {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 32px;
+    padding: 30px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin: 40px 20px 20px 20px;
+    position: relative;
+    background-color: #25253733;
+}
+
+
+.write h2 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 100%;
+}
+
+.write a {
+    margin-left: auto;
+    margin-right: 10px;
+    padding: 7px 32px;
+    border-radius: 18px;
+    background-color: #aca0eb;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+b {
+    font-weight: 700;
+}
+
+.write a:hover {
+    background-color: #7f6aee;
+}
+
+/* 배경 이미지 조정 */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.boardItem {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.boardItem:hover {
+    transform: translateY(-5px);
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .search {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 20px;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        margin-top: 60px;
+    }
+}
+
+.profileHeader .profileImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.profileHeader .profileImage img {
+    height: 72px;
+    width: 72px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* profileHeader 안에서는 드롭다운까지 수평 정렬되는 걸 막기 위해 column 정렬로 */
+.profileHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+/* 프로필 이미지와 버튼만 수평 정렬 */
+.profileRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#writeLink {
+    position: static;
+    margin-left: auto;
+    padding: 7px 32px;
+    border-radius: 18px;
+    background-color: #aca0eb;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-decoration: none;
+}
