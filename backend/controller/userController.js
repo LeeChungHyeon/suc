@@ -24,7 +24,12 @@ const SALT_ROUNDS = 10;
  * 닉네임 중복 체크
  */
 
-// 로그인
+/**
+ * 로그인을 진행합니다.
+ * @param {string} email - userEmail
+ * @param {string} password - 비밀번호
+ * @returns {message:"STATUS_MESSAGE.LOGIN_SUCCESS" data:responseData[]} - 유저 정보 제공
+ */
 exports.loginUser = async (request, response, next) => {
     const { email, password } = request.body;
 

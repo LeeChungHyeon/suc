@@ -8,21 +8,18 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: #90cae07a;
+    background-color: #ffffff;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* 왼쪽 검색 영역 */
 .search {
-    width: 200px;
-    height: 100vh;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    padding: 30px 20px;
-    margin: 20px;
     box-sizing: border-box;
     flex-shrink: 0;
     border-radius: 12px;
@@ -81,7 +78,7 @@ body {
     flex-direction: column;
     overflow: hidden;
     padding: 20px;
-    background-color: #5460a575;
+    background-color: #eeeeee;
 }
 
 .boardList {
@@ -99,12 +96,12 @@ body {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    row-gap: 32px;
-    padding: 30px 20px;
-    width: 100%;
+    row-gap: 10px;
+    padding: 10px 10px;
+    width: 510px;
     box-sizing: border-box;
     border-radius: 12px;
-    margin: 40px 20px 20px 20px;
+    margin: 0px 20px 20px 20px;
     position: relative;
     background-color: #25253733;
 }

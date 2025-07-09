@@ -1,11 +1,8 @@
 import CommentItem from '../component/comment/comment.js';
 import Dialog from '../component/dialog/dialog.js';
-import Header from '../component/header/header.js';
 import {
     authCheck,
-    getCookie,
     getServerUrl,
-    prependChild,
     padTo2Digits,
 } from '../utils/function.js';
 import {
@@ -185,12 +182,19 @@ const init = async () => {
         if (data.status === HTTP_NOT_AUTHORIZED) {
             window.location.href = '/html/login.html';
         }
-        const profileImage =
+        
+        const profileImagePath =
             myInfo.profileImagePath === undefined || myInfo.profileImagePath === null
                 ? DEFAULT_PROFILE_IMAGE
                 : `${getServerUrl()}${myInfo.profileImagePath}`;
 
-        prependChild(document.body, Header('커뮤니티', 2, profileImage));
+        const imgElement = document.querySelector('#headerProfileImage img');
+        if (imgElement) {
+            imgElement.src = profileImagePath;
+        }
+
+        const profileName = document.getElementById('profileName');
+        profileName.textContent = myInfo.nickname;
 
         const pageId = getQueryString('id');
 

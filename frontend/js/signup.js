@@ -250,7 +250,6 @@ const uploadProfileImage = () => {
 
 const init = async () => {
     await authCheckReverse();
-    prependChild(document.body, Header('커뮤니티', 1));
     observeSignupData();
     addEventForInputElements();
     signupClick();

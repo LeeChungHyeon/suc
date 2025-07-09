@@ -12,35 +12,27 @@ const {
  * 게시글 삭제
  */
 
+const errorHandler = (condition, statusMessage, statusCode) => {
+    if (condition) {
+        const error = new Error(statusMessage);
+        error.status = statusCode;
+        throw error;
+    }
+}
+
 // 게시글 작성
 exports.writePost = async (request, response, next) => {
     const { userid: userId } = request.headers;
     const { postTitle, postContent, attachFilePath } = request.body;
 
     try {
-        if (!postTitle) {
-            const error = new Error(STATUS_MESSAGE.INVALID_POST_TITLE);
-            error.status = STATUS_CODE.BAD_REQUEST;
-            throw error;
-        }
+        errorHandler(!postTitle, STATUS_MESSAGE.INVALID_POST_TITLE, STATUS_CODE.BAD_REQUEST);
 
-        if (postTitle.length > 26) {
-            const error = new Error(STATUS_MESSAGE.INVALID_POST_TITLE_LENGTH);
-            error.status = STATUS_CODE.BAD_REQUEST;
-            throw error;
-        }
+        errorHandler(postTitle.length > 26, STATUS_MESSAGE.INVALID_POST_TITLE_LENGTH, STATUS_CODE.BAD_REQUEST);
 
-        if (!postContent) {
-            const error = new Error(STATUS_MESSAGE.INVALID_POST_CONTENT);
-            error.status = STATUS_CODE.BAD_REQUEST;
-            throw error;
-        }
+        errorHandler(!postContent, STATUS_MESSAGE.INVALID_POST_CONTENT, STATUS_CODE.BAD_REQUEST);
 
-        if (postContent.length > 1500) {
-            const error = new Error(STATUS_MESSAGE.INVALID_POST_CONTENT_LENGHT);
-            error.status = STATUS_CODE.BAD_REQUEST;
-            throw error;
-        }
+        errorHandler(postContent.length > 1500, STATUS_MESSAGE.INVALID_POST_CONTENT_LENGHT, STATUS_CODE.BAD_REQUEST);
 
         const requestData = {
             userId,

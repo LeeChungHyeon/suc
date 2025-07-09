@@ -29,6 +29,7 @@
     letter-spacing: -0.02em;
     font-weight: bold;
     color: #000000;
+    padding: 20px;
 }
 
 .head .writerWrap {
@@ -77,7 +78,7 @@
 }
 
 .body {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,4 +237,77 @@
     display: flex;
     flex-direction: column;
     row-gap: 32px;
+}
+
+.profileHeader .profileImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.profileHeader .profileImage img {
+    height: 72px;
+    width: 72px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* profileHeader 안에서는 드롭다운까지 수평 정렬되는 걸 막기 위해 column 정렬로 */
+.profileHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.write a {
+    margin-left: auto;
+    margin-right: 10px;
+    padding: 7px 32px;
+    border-radius: 18px;
+    background-color: #aca0eb;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.write a:hover {
+    background-color: #7f6aee;
+}
+
+.wrap2 {
+    flex: 1;
+    width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 90px;
+    background-color: #eeeeee;
+}
+
+/* 프로필 이미지와 버튼만 수평 정렬 */
+.profileRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.drop {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    border-radius: 6px;
+    width: 160px;
+    padding: 8px 0;
+    z-index: 999;
 }

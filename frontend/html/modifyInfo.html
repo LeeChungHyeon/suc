@@ -5,30 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
             rel="stylesheet"
-            href="../css/login.css"
+            href="../css/modifyInfo.css"
             crossorigin="anonymous"
         />
         <title>STARTUPCODE Edu Community</title>
     </head>
     <body>
-        <div style="display: flex; flex-direction: row; align-items: center; place-items: center; width: 500px;">
-
+        <div style="display: flex; flex-direction: row; align-items: center; place-items: center; width: 50%;">
             <section class="wrap">
                 <div class="write">
-
                     <div class="profileHeader">
                         <div class="profileImage" id="headerProfileImage">
                             <img src="" alt="Profile" />
                             <span id="profileName"></span><span>님 반갑습니다.</span>
                         </div>
-                        <ul class="drop none" id="headerDropdownMenu" style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 8px;"><a href="./">메인페이지</a></li>
-                            <li style="margin-bottom: 8px;"><a href="./modifyInfo.html">회원정보수정</a></li>
+                        <ul class="drop none" id="headerDropdownMenu" style="list-style: none;">
+                            <li style="margin-bottom: 8px;"><a href="./index.html">메인페이지</a></li>
+                            <li style="margin-bottom: 8px;"><a href="./modifyPassword.html">비밀번호 변경</a></li>
                             <li><a href="#logout" id="logoutButton">로그아웃</a></li>
                         </ul>
                     </div>
                     <h2 class="title">회원정보수정</h2>
-
                 </div>
     
                 <article>
@@ -108,14 +105,19 @@
                 console.error('로그아웃 버튼을 찾을 수 없습니다.');
             }
 
-            headerProfileImage.addEventListener('click', () => {
-                headerDropdownMenu.classList.toggle('none');
+            window.addEventListener('click', (e) => {
+                console.log('클릭됨');
+                const dropdown = document.getElementById('headerDropdownMenu');
+                const profileArea = document.querySelector('.profileImage');
+                if (!profileArea.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.add('none');
+                }
             });
 
-            window.addEventListener('click', (e) => {
-                if (!headerProfileImage.contains(e.target) && !headerDropdownMenu.contains(e.target)) {
-                    headerDropdownMenu.classList.add('none');
-                }
+            headerProfileImage.addEventListener('click', (e) => {
+                e.stopPropagation(); // window 클릭 이벤트 버블링 방지
+                const dropdown = document.getElementById('headerDropdownMenu');
+                dropdown.classList.toggle('none');
             });
 
             function deleteCookie(name) {
