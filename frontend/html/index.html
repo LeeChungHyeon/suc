@@ -44,7 +44,12 @@
 
         </div>
         <script>
-            import { getServerUrl } from '../utils/function.js';
+            const getServerUrl = () => {
+                const host = window.location.hostname;
+                return host.includes('localhost')
+                    ? 'http://localhost:3000'
+                    : `http://${host}:3000`;
+            };
 
             const headerProfileImage = document.getElementById('headerProfileImage');
             const headerDropdownMenu = document.getElementById('headerDropdownMenu');
@@ -55,7 +60,7 @@
                     console.log('로그아웃 버튼 클릭됨');
 
                     try {
-                        const response = await fetch(`${getServerUrl()}:3000/users/logout`, {
+                        const response = await fetch(`${getServerUrl()}/users/logout`, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
