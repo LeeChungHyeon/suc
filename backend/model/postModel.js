@@ -71,6 +71,9 @@ exports.writePost = async requestData => {
 exports.getPosts = async (requestData, response) => {
     let { offset, limit, query } = requestData;
 
+    offset = parseInt(offset, 10);
+    limit = parseInt(limit, 10);
+
     console.log('Request Data:', requestData);
 
 
@@ -119,7 +122,6 @@ exports.getPosts = async (requestData, response) => {
         FROM post_table
         LEFT JOIN user_table ON post_table.user_id = user_table.user_id
         LEFT JOIN file_table ON user_table.file_id = file_table.file_id
-        WHERE ${whereClause}
         ORDER BY post_table.created_at DESC
         LIMIT ? OFFSET ?;
     `;
