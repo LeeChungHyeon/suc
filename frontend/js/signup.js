@@ -147,7 +147,7 @@ const inputEventHandler = async (event, uid) => {
             signupData.passwordCheck = value;
             helperElement.textContent = '';
         }
-    } else if (uid == 'nickname') {
+    } else if (uid === 'nickname') {
         const value = event.target.value;
         const isValidNickname = validNickname(value);
         const helperElement = document.querySelector(
